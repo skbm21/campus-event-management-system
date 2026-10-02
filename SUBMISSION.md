@@ -159,8 +159,8 @@ Biggest risk: integration at the end. Mitigate it by having the frontend use moc
 ```
 
 ### Manual Grounding Evaluation
-[3-4 sentences: is the architecture realistic for a 3-hour prototype? What was unrealistic, and what did we change?]
 
+The AI-generated architecture is largely realistic for a 3-hour prototype: it uses a simple three-layer design (static HTML/CSS/JS frontend, ASP.NET Core Minimal API, SQL Server) with only three entities and six endpoints, and it sensibly puts passwords, JWT, and email notifications out of scope. However, the time estimates are optimistic for beginners, because setting up an ASP.NET Core project, connecting it to SQL Server, and building the capacity and duplicate-registration logic in about 40 minutes leaves little room for debugging. The plan also left out the other exam deliverables (unit tests, the ERD, and documentation), so we scoped the work down: the frontend became a single page (index.html, script.js, styles.css in /frontend) instead of the proposed multi-page layout with css/ and js/ subfolders, and the backend was limited to a single service class. These changes let the team finish all five tasks within 180 minutes while keeping the entities and fields consistent with the AI's design.
 ---
 
 ## Task 2: AI-Assisted Frontend
