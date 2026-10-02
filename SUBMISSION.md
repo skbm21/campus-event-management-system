@@ -292,37 +292,54 @@ The SQL script is at `/database/schema.sql`.
 
 ## Task 4: Testing, Security & Refactoring
 
-### Unit Tests
-[Prompt used, plus where the test files are]
+### Prompt 
+```
+Unit Test Generation:
+Role: You are a QA engineer experienced in xUnit and Moq for C#.
+Task: Write unit tests for a SeatAvailabilityService.HasAvailableSeats(eventId)
+method that compares an event's capacity with its registration count.
+Constraints:
+- Use Moq to mock an IEventRepository so no database is touched.
+- Cover: seats available, event exactly full, event over capacity.
+- Verify the repository is called as expected.
 
-### Vulnerability Diagnosis
-[Prompt used and the AI's diagnosis of the SQL injection and resource leak]
+Security & Vulnerability Challenge:
+Role: You are a Senior Application Security Engineer reviewing C# code.
+Task: Diagnose the following method for SQL injection risks and unmanaged
+resource (memory/connection) leaks. List each vulnerability, explain how it
+could be exploited or cause harm, and then provide a refactored version.
+Constraints:
+- Use parameterized queries (SqlParameter).
+- Use using statements for SqlConnection, SqlCommand, and SqlDataReader.
+- Do not hardcode the connection string.
+- Handle the case where no row is returned.
+Code:
+[// Flawed code: Contains SQL Injection and unmanaged resource leak public string GetUserRegistration(string inputEmail) { string connStr =
+"Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;"; SqlConnection conn = new SqlConnection(connStr); conn.Open();
+// Connection is not closed or disposed SqlCommand cmd = new SqlCommand("SELECT * FROM Registrations WHERE Email = '" + inputEmail + "'", conn);
+return cmd.ExecuteScalar().ToString();]
+```
 
-### Refactored Code
-The fixed code is at `/backend/RegistrationService.cs`.
 
----
-
-## Setup Instructions
-
-1. Clone the repository: `git clone [repo URL]`
-2. Frontend: open `/frontend/index.html` in a browser
-3. Database: run `/database/schema.sql` in SQL Server
-4. Backend: [how to open or run `/backend/RegistrationService.cs`]
-
----
 
 ## AI Disclosure Statement
 
-We used the following AI tools: [e.g., Claude for Tasks 1 and 4, v0 for Task 2].
-We verified outputs by [e.g., reading all generated code, testing the page in a browser, running the SQL script, checking against the exam requirements].
+We used the following AI tools: Claude, Gemini, and Google Antigravity
+We verified outputs by reading all generated code, testing the page in a browser, 
+running the SQL script and unit tests, and checking everything against the exam requirements, 
+correcting the mistakes listed in our Group Verification Log.
 
 ---
+
 
 ## Group Verification Log
 
 | Task # | Identified AI Flaw / Limitation | Manual Correction Applied | Member Responsible |
-|--------|--------------------------------|---------------------------|--------------------|
-| Task 1 | [flaw you found] | [what you changed] | Member 1 |
-| Task 2 | | | Member 2 |
-| Task 3 | | | Member 3 |
+|--------|---------------------------------|---------------------------|--------------------|
+| Task 1 | AI proposed a multi-page frontend and a 3-hour timeline that was too optimistic for beginners | Simplified to a single-page frontend and scoped the backend to one service class                        | Member 1            |
+| Task 1 | AI used an `X-User-Id` header for auth, which is insecure | Flagged it as a demo-only shortcut and kept it out of our implementation                                                                    | Member 1            |
+| Task 2 | Missing `aria-label` attributes on some form inputs | Manually added `aria-label` and matching `<label>` elements                                                                                       | Member 2            |
+| Task 2 | Used generic `<div>` wrappers instead of semantic tags | Replaced them with `<header>`, `<main>`, `<section>`, `<article>`, and `<footer>`                                                              | Member 2            |
+| Task 3 | AI did not add non-clustered indexes on foreign key columns | Added `CREATE NONCLUSTERED INDEX` statements for `UserId` and `EventId`                                                                   | Member 3            |
+| Task 3 | Missing CHECK constraints (e.g., capacity must be greater than 0) | Added CHECK constraints to `schema.sql`                                                                                             | Member 3            |
+| Task 4 | Original code never closed or disposed the DB connection, and the AI's first refactor still used string concatenation | Wrapped connection and command in `using` blocks and switched to `SqlParameter` | Member 1 / Member 3 |
