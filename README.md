@@ -1,5 +1,5 @@
-This is made by the following group members:
+# This is made by the following group members:
 
-Masinsin, Shann
-Rodrigo, Fructh
-Lara, Sean
+- Masinsin, Shann
+- Rodrigo, Fructh
+- Lara, Sean
