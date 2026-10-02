@@ -124,7 +124,8 @@ campus-events/
     └── 02_seed.sql         # 2 admins, 5 students, 6 events
 6. Work Split (3 hours)
 
-Everyone, 0:00–0:20: Agree on the API contract (section 4) and example JSON responses. Set up the Git repo and branches. This step prevents most integration problems later.
+Everyone, 0:00–0:20: Agree on the API contract (section 4) and example JSON responses. Set up the Git repo and branches.
+This step prevents most integration problems later.
 
 Member A: Frontend
 
@@ -148,7 +149,8 @@ Time	Task
 1:00–1:50	Register endpoint (duplicate and capacity checks), registrations list, and admin endpoint
 1:50–2:20	Test every endpoint in Postman or curl, including error cases
 
-Everyone, 2:20–3:00: Integrate the real API into the frontend, run an end-to-end test (login, register, then check as admin), fix bugs, and write a short README with run steps.
+Everyone, 2:20–3:00: Integrate the real API into the frontend, run an end-to-end test
+(login, register, then check as admin), fix bugs, and write a short README with run steps.
 
 Tips for AI Tool Use
 Give the AI one small task at a time (for example, "write a parameterized method to insert a registration"). Don't ask for the whole app.
@@ -174,7 +176,10 @@ changes let the team finish all five tasks within 180 minutes while keeping the 
 
 ### Prompt
 ```
-You are a Senior Frontend Engineer who specializes in accessible web interfaces. I'm building a prototype for an Online Campus Event Management System. Students can view upcoming campus events and register for one. This is a 3-hour class prototype, so keep it simple. Create a single-page Event Catalog & Registration Form in the /frontend folder using plain HTML, CSS, and a little vanilla JavaScript. Files: index.html, styles.css, script.js.
+You are a Senior Frontend Engineer who specializes in accessible web interfaces. I'm building a prototype for an Online Campus Event Management
+System. Students can view upcoming campus events and register for one. This is a 3-hour class prototype, so keep it simple. Create a single-page
+Event Catalog & Registration Form in the /frontend folder using plain HTML, CSS, and a little vanilla JavaScript. Files: index.html, styles.css,
+script.js.
 
 The page must include:
 1. An event catalog showing 4-6 sample events as cards. Each card has an image, title, date, venue, seats remaining, and a "Register" button.
@@ -185,7 +190,8 @@ The page must include:
 Use DLSU theme colors
 
 - Use Semantic HTML5 tags (<header>, <nav>, <main>, <section>, <article>, <footer>). Do not use generic <div> wrappers where a semantic tag fits.
-- Accessibility (WCAG POUR): every input has a visible <label> linked with for/id AND an aria-label; every image has meaningful alt text; color contrast is at least 4.5:1; the page is fully keyboard navigable with visible focus styles; error messages use aria-live="polite".
+- Accessibility (WCAG POUR): every input has a visible <label> linked with for/id AND an aria-label; every image has meaningful alt text; color
+contrast is at least 4.5:1; the page is fully keyboard navigable with visible focus styles; error messages use aria-live="polite".
 - The layout must be responsive (mobile-first).
 - Do NOT use any frameworks or libraries (no React, Bootstrap, or jQuery). Do NOT load external CDNs.
 - Use placeholder images from local files or inline SVG, not hotlinked images.
