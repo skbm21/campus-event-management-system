@@ -214,11 +214,76 @@ contrast is at least 4.5:1; the page is fully keyboard navigable with visible fo
 ## Task 3: Database Design & ERD
 
 ### Prompt
-[Member 3 pastes the prompt used]
+```
+Role: You are a Senior Database Engineer specializing in SQL Server.
+Context: We are building an Online Campus Event Management System where
+students view upcoming events, register for events, and administrators
+view registered attendees.
+
+Task:
+1. Design a 3rd Normal Form (3NF) schema with at least these entities:
+   Users, Events, Registrations (add others such as Venues or Roles if justified).
+2. Output an Entity-Relationship Diagram in Mermaid.js erDiagram syntax.
+3. Output a production-grade T-SQL DDL script.
+
+
+Constraints:
+- Use explicit PRIMARY KEY and FOREIGN KEY constraints with ON DELETE rules.
+- Include CHECK constraints (e.g., email format/domain @univ.edu.ph,
+  capacity > 0, end date after start date, valid role/status values).
+- Add a UNIQUE constraint preventing duplicate registrations (same user + event).
+- Create NON-CLUSTERED indexes on ALL foreign key columns.
+- Do not use stored procedures or triggers. Do not denormalize.
+- Output the Mermaid code and the SQL in two separate code blocks.
+```
 
 ### ERD (Mermaid.js)
 ```mermaid
-[Member 3 pastes the Mermaid code here]
+erDiagram
+    ROLES ||--o{ USERS : "assigned to"
+    USERS ||--o{ EVENTS : "creates"
+    VENUES ||--o{ EVENTS : "hosts"
+    USERS ||--o{ REGISTRATIONS : "makes"
+    EVENTS ||--o{ REGISTRATIONS : "receives"
+
+
+    ROLES {
+        int RoleId PK
+        nvarchar RoleName UK
+    }
+    USERS {
+        int UserId PK
+        int RoleId FK
+        nvarchar Email UK
+        nvarchar FullName
+        bit IsActive
+        datetime2 CreatedAt
+    }
+    VENUES {
+        int VenueId PK
+        nvarchar VenueName UK
+        nvarchar Location
+    }
+    EVENTS {
+        int EventId PK
+        int VenueId FK
+        int CreatedByUserId FK
+        nvarchar Title
+        nvarchar Description
+        datetime2 StartDate
+        datetime2 EndDate
+        int Capacity
+        nvarchar Status
+        datetime2 CreatedAt
+    }
+    REGISTRATIONS {
+        int RegistrationId PK
+        int UserId FK
+        int EventId FK
+        datetime2 RegisteredAt
+        nvarchar Status
+    }
+
 ```
 
 The SQL script is at `/database/schema.sql`.
