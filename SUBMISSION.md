@@ -47,6 +47,7 @@ CONSTRAINTS
 ```
 
 ### AI Output
+```
 Online Campus Event Management System: Prototype Design
 1. Requirements
 
@@ -155,6 +156,7 @@ Read and run everything it generates before committing.
 Always include the section 4 contract in your prompts so frontend and backend code agree.
 
 Biggest risk: integration at the end. Mitigate it by having the frontend use mock data early and merging a working backend by the 1:50 mark.
+```
 
 ### Manual Grounding Evaluation
 [3-4 sentences: is the architecture realistic for a 3-hour prototype? What was unrealistic, and what did we change?]
