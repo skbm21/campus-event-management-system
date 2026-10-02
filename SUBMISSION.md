@@ -198,10 +198,17 @@ contrast is at least 4.5:1; the page is fully keyboard navigable with visible fo
 - Add short comments explaining the accessibility choices.
 
 ```
-### AI Output 
-```
+### AI Output (Screenshots)
+<img width="1522" height="829" alt="image" src="https://github.com/user-attachments/assets/3e3026ba-3fe5-4486-9493-bfe0601ffbd7" />
 
-```
+<img width="1597" height="829" alt="image" src="https://github.com/user-attachments/assets/6f7a55f6-9aee-440d-9eba-b18312a8001e" />
+
+<img width="1674" height="826" alt="image" src="https://github.com/user-attachments/assets/16a3ec42-982e-4c06-8704-1b90416b3096" />
+
+<img width="1526" height="826" alt="image" src="https://github.com/user-attachments/assets/c7096fc1-6dc4-40eb-ae62-cb0959c35bf9" />
+
+
+
 ---
 
 ## Task 3: Database Design & ERD
