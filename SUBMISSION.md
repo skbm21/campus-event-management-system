@@ -172,8 +172,30 @@ changes let the team finish all five tasks within 180 minutes while keeping the 
 
 ## Task 2: AI-Assisted Frontend
 
-[Member 2 adds: the prompt used, a short description of the UI, and the location of the code in /frontend]
+### Prompt
+```
+You are a Senior Frontend Engineer who specializes in accessible web interfaces. I'm building a prototype for an Online Campus Event Management System. Students can view upcoming campus events and register for one. This is a 3-hour class prototype, so keep it simple. Create a single-page Event Catalog & Registration Form in the /frontend folder using plain HTML, CSS, and a little vanilla JavaScript. Files: index.html, styles.css, script.js.
 
+The page must include:
+1. An event catalog showing 4-6 sample events as cards. Each card has an image, title, date, venue, seats remaining, and a "Register" button.
+2. A registration form with: Full Name, Student Email, Student ID, and an Event dropdown.
+3. Basic client-side validation. The email must end with @univ.edu.ph. Show friendly error messages.
+4. A success message after submitting. No backend is needed yet.
+
+Use DLSU theme colors
+
+- Use Semantic HTML5 tags (<header>, <nav>, <main>, <section>, <article>, <footer>). Do not use generic <div> wrappers where a semantic tag fits.
+- Accessibility (WCAG POUR): every input has a visible <label> linked with for/id AND an aria-label; every image has meaningful alt text; color contrast is at least 4.5:1; the page is fully keyboard navigable with visible focus styles; error messages use aria-live="polite".
+- The layout must be responsive (mobile-first).
+- Do NOT use any frameworks or libraries (no React, Bootstrap, or jQuery). Do NOT load external CDNs.
+- Use placeholder images from local files or inline SVG, not hotlinked images.
+- Add short comments explaining the accessibility choices.
+
+```
+### AI Output 
+```
+
+```
 ---
 
 ## Task 3: Database Design & ERD
