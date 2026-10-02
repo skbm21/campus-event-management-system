@@ -334,12 +334,12 @@ correcting the mistakes listed in our Group Verification Log.
 
 ## Group Verification Log
 
-| Task # | Identified AI Flaw / Limitation | Manual Correction Applied | Member Responsible |
-|--------|---------------------------------|---------------------------|--------------------|
-| Task 1 | AI proposed a multi-page frontend and a 3-hour timeline that was too optimistic for beginners | Simplified to a single-page frontend and scoped the backend to one service class                        | Masinsin, Shann     |
-| Task 1 | AI used an `X-User-Id` header for auth, which is insecure | Flagged it as a demo-only shortcut and kept it out of our implementation                                                                    | Masinsin, Shann     |
-| Task 2 | Missing `aria-label` attributes on some form inputs | Manually added `aria-label` and matching `<label>` elements                                                                                       | Rodrigo, Fructh     |
-| Task 2 | Used generic `<div>` wrappers instead of semantic tags | Replaced them with `<header>`, `<main>`, `<section>`, `<article>`, and `<footer>`                                                              | Rodrigo, Fructh     |
-| Task 3 | AI did not add non-clustered indexes on foreign key columns | Added `CREATE NONCLUSTERED INDEX` statements for `UserId` and `EventId`                                                                   | Lara, Sean          |
-| Task 3 | Missing CHECK constraints (e.g., capacity must be greater than 0) | Added CHECK constraints to `schema.sql`                                                                                             | Lara, Sean          |
-| Task 4 | Original code never closed or disposed the DB connection, and the AI's first refactor still used string concatenation | Wrapped connection and command in `using` blocks and switched to `SqlParameter` | Masinsin, Shann   / Lara, Sean |
+| Task #         | Identified AI Flaw / Limitation | Manual Correction Applied | Member Responsible |
+|--------        |---------------------------------|---------------------------|--------------------|
+| Task 1         | AI proposed a multi-page frontend and a 3-hour timeline that was too optimistic for beginners | Simplified to a single-page frontend and scoped the backend to one service class                        | Masinsin, Shann     |
+| Task 1         | AI used an `X-User-Id` header for auth, which is insecure | Flagged it as a demo-only shortcut and kept it out of our implementation                                                                    | Masinsin, Shann     |
+| Task 2         | Missing `aria-label` attributes on some form inputs | Manually added `aria-label` and matching `<label>` elements                                                                                       | Rodrigo, Fructh     |
+| Task 2         | Used generic `<div>` wrappers instead of semantic tags | Replaced them with `<header>`, `<main>`, `<section>`, `<article>`, and `<footer>`                                                              | Rodrigo, Fructh     |
+| Task 3         | AI did not add non-clustered indexes on foreign key columns | Added `CREATE NONCLUSTERED INDEX` statements for `UserId` and `EventId`                                                                   | Lara, Sean          |
+| Task 3         | Missing CHECK constraints (e.g., capacity must be greater than 0) | Added CHECK constraints to `schema.sql`                                                                                             | Lara, Sean          |
+| Task 4         | Original code never closed or disposed the DB connection, and the AI's first refactor still used string concatenation | Wrapped connection and command in `using` blocks and switched to `SqlParameter` | Masinsin, Shann   / Lara, Sean |
