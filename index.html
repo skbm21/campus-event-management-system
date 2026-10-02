@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- viewport meta ensures mobile-first rendering and prevents
+       iOS auto-zoom on input focus (font-size>=16px handles that too) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO & social meta -->
+  <meta name="description" content="Browse and register for upcoming De La Salle University campus events. Find seminars, workshops, sports fests, and cultural shows all in one place." />
+  <meta name="theme-color" content="#006633" />
+  <title>Campus Events — DLSU Office of Student Affairs</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- ══════════════════════════════════════════════════════════
+       SKIP LINK (WCAG 2.4.1 Bypass Blocks — Level A)
+       First focusable element on the page. Visually hidden until
+       Tab is pressed; transports keyboard users past the header
+       straight into main content.
+  ══════════════════════════════════════════════════════════ -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SITE HEADER
+       <header> + <nav> provide ARIA landmark roles automatically,
+       so screen-reader users can jump to them via landmark menus.
+  ══════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <!-- Logo / brand — wrapped in <a> so it is keyboard-focusable
+           and navigates back to the top of the page -->
+      <a class="site-logo" href="#" aria-label="DLSU Campus Events – go to top">
+        <!-- Inline SVG shield logo keeps it crisp at all sizes and
+             avoids an external image request; aria-hidden because
+             the adjacent text already describes it -->
+        <svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2 L36 9 L36 22 C36 30.5 29 37 20 39 C11 37 4 30.5 4 22 L4 9 Z" fill="#fdb913"/>
+          <path d="M20 5 L33 11 L33 22 C33 29 27 34.5 20 36.5 C13 34.5 7 29 7 22 L7 11 Z" fill="#006633"/>
+          <text x="20" y="26" text-anchor="middle" fill="#fdb913" font-size="13" font-weight="900" font-family="sans-serif">D</text>
+        </svg>
+        <span class="site-logo__text">
+          Campus Events
+          <span>De La Salle University</span>
+        </span>
+      </a>
+
+      <!-- Primary site navigation -->
+      <nav aria-label="Primary navigation">
+        <ul class="site-nav" role="list">
+          <li><a href="#catalog" aria-current="page">Events</a></li>
+          <li><a href="#register-section">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO SECTION
+       <section> with an aria-labelledby linking to the h1 creates
+       a named ARIA region visible in screen-reader landmark lists.
+  ══════════════════════════════════════════════════════════ -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <p class="hero__subtitle" aria-hidden="true">Academic Year 2026–2027</p>
+    <h1 class="hero__title" id="hero-heading">Discover &amp; Join<br>Campus Events</h1>
+    <p class="hero__desc">Find seminars, workshops, sports fests, and cultural shows happening right on campus. Register in minutes — no account needed.</p>
+    <a class="hero__cta" href="#catalog">
+      <!-- Inline SVG icon is decorative; aria-hidden removes it from
+           the accessibility tree to avoid redundant announcements -->
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 6l6 6-6 6"/>
+      </svg>
+      Browse Events
+    </a>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN CONTENT
+       id="main-content" is the skip-link target.
+       <main> landmark lets AT users jump here directly.
+  ══════════════════════════════════════════════════════════ -->
+  <main id="main-content">
+    <div class="page-wrapper">
+
+      <!-- ────────────────────────────────────────────────────
+           EVENT CATALOG
+           aria-labelledby wires the section to its visible heading,
+           giving it a descriptive ARIA label for landmark navigation.
+      ──────────────────────────────────────────────────────── -->
+      <section id="catalog" aria-labelledby="catalog-heading">
+        <h2 class="section-heading" id="catalog-heading">Upcoming Events</h2>
+        <p class="section-intro">Click <strong>Register</strong> on any event to autofill the form below.</p>
+
+        <!--
+          Each event is an <article> because it is a self-contained
+          piece of content that makes sense in isolation (e.g., in a
+          feed or search result). Using <article> instead of <div>
+          exposes implicit ARIA role="article" to AT.
+        -->
+        <div class="events-grid" role="list" aria-label="Campus events list">
+
+          <!-- ── EVENT 1 ─────────────────────────────────────── -->
+          <article class="event-card" role="listitem" id="event-card-1" data-event-id="1" data-event-name="National Science &amp; Tech Summit">
+            <div class="event-card__image-wrap">
+              <!--
+                Inline SVG used as the event illustration to avoid
+                hotlinking external images. The <title> inside the SVG
+                acts as the accessible name for the image region;
+                aria-label on the wrapper doubles as a fallback.
+              -->
+              <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration for National Science and Technology Summit" role="img">
+                <title>National Science and Technology Summit event banner</title>
+                <rect width="320" height="180" fill="#003d1f"/>
+                <circle cx="160" cy="70" r="42" fill="none" stroke="#fdb913" stroke-width="3" opacity=".7"/>
+                <circle cx="160" cy="70" r="28" fill="none" stroke="#fdb913" stroke-width="2" opacity=".5"/>
+                <circle cx="160" cy="70" r="10" fill="#fdb913"/>
+                <!-- orbiting dots -->
+                <ellipse cx="160" cy="70" rx="55" ry="22" fill="none" stroke="#006633" stroke-width="2.5"/>
+                <ellipse cx="160" cy="70" rx="55" ry="22" fill="none" stroke="#006633" stroke-width="2.5" transform="rotate(60 160 70)"/>
+                <ellipse cx="160" cy="70" rx="55" ry="22" fill="none" stroke="#006633" stroke-width="2.5" transform="rotate(120 160 70)"/>
+                <rect x="40" y="130" width="240" height="36" rx="6" fill="rgba(0,0,0,.35)"/>
+                <text x="160" y="153" text-anchor="middle" fill="#fdb913" font-size="13" font-weight="700" font-family="sans-serif">SCIENCE &amp; TECH SUMMIT</text>
+              </svg>
+              <span class="event-card__badge">Academic</span>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title">National Science &amp; Tech Summit</h3>
+              <ul class="event-card__meta" aria-label="Event details">
+                <li>
+                  <!-- Icons are aria-hidden; text provides the meaning -->
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <time datetime="2026-10-15">October 15, 2026 · 8:00 AM</time>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Yuchengco Hall, Room 301</span>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  <span class="seats-badge seats-badge--plenty" aria-label="48 seats remaining">
+                    <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 110 10A5 5 0 0112 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+                    48 seats left
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <footer class="event-card__footer">
+              <!-- aria-describedby links the button to the card title so
+                   screen readers say "Register, National Science & Tech Summit button" -->
+              <button class="btn btn--primary register-btn"
+                      aria-label="Register for National Science and Tech Summit"
+                      aria-describedby="event-card-1"
+                      data-event-id="1"
+                      data-event-name="National Science &amp; Tech Summit">
+                Register
+              </button>
+            </footer>
+          </article>
+
+          <!-- ── EVENT 2 ─────────────────────────────────────── -->
+          <article class="event-card" role="listitem" id="event-card-2" data-event-id="2" data-event-name="Animo Sports Fest 2026">
+            <div class="event-card__image-wrap">
+              <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration for Animo Sports Fest 2026" role="img">
+                <title>Animo Sports Fest 2026 event banner</title>
+                <rect width="320" height="180" fill="#1a3d00"/>
+                <!-- Trophy silhouette -->
+                <rect x="135" y="110" width="50" height="8" rx="2" fill="#fdb913"/>
+                <rect x="148" y="82" width="24" height="30" rx="0" fill="#fdb913"/>
+                <path d="M110 35 Q160 85 210 35" fill="none" stroke="#fdb913" stroke-width="4"/>
+                <ellipse cx="160" cy="35" rx="50" ry="28" fill="#fdb913" opacity=".15" stroke="#fdb913" stroke-width="3"/>
+                <path d="M118 35 L118 72 Q160 95 202 72 L202 35" fill="#fdb913" opacity=".2"/>
+                <circle cx="160" cy="55" r="20" fill="#fdb913" opacity=".8"/>
+                <text x="160" y="62" text-anchor="middle" fill="#003d1f" font-size="18" font-weight="900" font-family="sans-serif">★</text>
+                <rect x="40" y="130" width="240" height="36" rx="6" fill="rgba(0,0,0,.4)"/>
+                <text x="160" y="153" text-anchor="middle" fill="#fdb913" font-size="13" font-weight="700" font-family="sans-serif">ANIMO SPORTS FEST 2026</text>
+              </svg>
+              <span class="event-card__badge">Sports</span>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title">Animo Sports Fest 2026</h3>
+              <ul class="event-card__meta" aria-label="Event details">
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <time datetime="2026-10-22">October 22–24, 2026 · All Day</time>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>DLSU Sports Complex</span>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  <span class="seats-badge seats-badge--low" aria-label="12 seats remaining, low availability">
+                    <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 110 10A5 5 0 0112 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+                    12 seats left
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <footer class="event-card__footer">
+              <button class="btn btn--primary register-btn"
+                      aria-label="Register for Animo Sports Fest 2026"
+                      data-event-id="2"
+                      data-event-name="Animo Sports Fest 2026">
+                Register
+              </button>
+            </footer>
+          </article>
+
+          <!-- ── EVENT 3 ─────────────────────────────────────── -->
+          <article class="event-card" role="listitem" id="event-card-3" data-event-id="3" data-event-name="Cultural Night: Sining at Lahi">
+            <div class="event-card__image-wrap">
+              <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration for Cultural Night: Sining at Lahi" role="img">
+                <title>Cultural Night: Sining at Lahi event banner</title>
+                <rect width="320" height="180" fill="#1a0a30"/>
+                <!-- Spotlight beams -->
+                <polygon points="80,0 110,0 200,180 50,180" fill="#fdb913" opacity=".08"/>
+                <polygon points="190,0 230,0 290,180 170,180" fill="#fdb913" opacity=".06"/>
+                <!-- Stars -->
+                <circle cx="50" cy="25" r="2" fill="#fdb913" opacity=".9"/>
+                <circle cx="130" cy="15" r="1.5" fill="white" opacity=".7"/>
+                <circle cx="210" cy="30" r="2" fill="#fdb913" opacity=".8"/>
+                <circle cx="280" cy="18" r="1.5" fill="white" opacity=".6"/>
+                <circle cx="270" cy="55" r="1" fill="white" opacity=".5"/>
+                <!-- Stage curtains -->
+                <path d="M0 0 Q30 90 0 180" fill="#4a0000" opacity=".8"/>
+                <path d="M320 0 Q290 90 320 180" fill="#4a0000" opacity=".8"/>
+                <!-- Performer silhouette -->
+                <ellipse cx="160" cy="100" rx="10" ry="12" fill="#fdb913" opacity=".9"/>
+                <line x1="160" y1="112" x2="160" y2="140" stroke="#fdb913" stroke-width="3" opacity=".9"/>
+                <line x1="160" y1="120" x2="145" y2="132" stroke="#fdb913" stroke-width="2.5" opacity=".9"/>
+                <line x1="160" y1="120" x2="175" y2="132" stroke="#fdb913" stroke-width="2.5" opacity=".9"/>
+                <rect x="40" y="148" width="240" height="28" rx="5" fill="rgba(0,0,0,.5)"/>
+                <text x="160" y="166" text-anchor="middle" fill="#fdb913" font-size="12" font-weight="700" font-family="sans-serif">SINING AT LAHI · CULTURAL NIGHT</text>
+              </svg>
+              <span class="event-card__badge">Culture</span>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title">Cultural Night: Sining at Lahi</h3>
+              <ul class="event-card__meta" aria-label="Event details">
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <time datetime="2026-11-07">November 7, 2026 · 6:00 PM</time>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>DLSU Auditorium, Henry Sy Sr. Hall</span>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  <span class="seats-badge seats-badge--plenty" aria-label="120 seats remaining">
+                    <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 110 10A5 5 0 0112 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+                    120 seats left
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <footer class="event-card__footer">
+              <button class="btn btn--primary register-btn"
+                      aria-label="Register for Cultural Night: Sining at Lahi"
+                      data-event-id="3"
+                      data-event-name="Cultural Night: Sining at Lahi">
+                Register
+              </button>
+            </footer>
+          </article>
+
+          <!-- ── EVENT 4 ─────────────────────────────────────── -->
+          <article class="event-card" role="listitem" id="event-card-4" data-event-id="4" data-event-name="Green Campus Sustainability Forum">
+            <div class="event-card__image-wrap">
+              <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration for Green Campus Sustainability Forum" role="img">
+                <title>Green Campus Sustainability Forum event banner</title>
+                <rect width="320" height="180" fill="#0a2a12"/>
+                <!-- Sun -->
+                <circle cx="260" cy="40" r="28" fill="#fdb913" opacity=".7"/>
+                <!-- Hills -->
+                <ellipse cx="100" cy="180" rx="120" ry="70" fill="#006633" opacity=".9"/>
+                <ellipse cx="240" cy="190" rx="110" ry="65" fill="#007a3d" opacity=".85"/>
+                <!-- Tree trunks -->
+                <rect x="150" y="100" width="8" height="40" fill="#4a2800"/>
+                <rect x="168" y="108" width="6" height="32" fill="#4a2800"/>
+                <!-- Tree foliage -->
+                <ellipse cx="154" cy="90" rx="22" ry="26" fill="#006633"/>
+                <ellipse cx="171" cy="97" rx="18" ry="22" fill="#007a3d"/>
+                <!-- Leaf details -->
+                <ellipse cx="154" cy="80" rx="14" ry="18" fill="#00a04d" opacity=".7"/>
+                <rect x="30" y="140" width="250" height="30" rx="5" fill="rgba(0,0,0,.45)"/>
+                <text x="155" y="160" text-anchor="middle" fill="#fdb913" font-size="12" font-weight="700" font-family="sans-serif">GREEN CAMPUS SUSTAINABILITY FORUM</text>
+              </svg>
+              <span class="event-card__badge">Environment</span>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title">Green Campus Sustainability Forum</h3>
+              <ul class="event-card__meta" aria-label="Event details">
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <time datetime="2026-11-14">November 14, 2026 · 9:00 AM</time>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Br. Andrew Gonzalez Hall</span>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  <span class="seats-badge seats-badge--low" aria-label="8 seats remaining, very low availability">
+                    <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 110 10A5 5 0 0112 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+                    8 seats left
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <footer class="event-card__footer">
+              <button class="btn btn--primary register-btn"
+                      aria-label="Register for Green Campus Sustainability Forum"
+                      data-event-id="4"
+                      data-event-name="Green Campus Sustainability Forum">
+                Register
+              </button>
+            </footer>
+          </article>
+
+          <!-- ── EVENT 5 ─────────────────────────────────────── -->
+          <article class="event-card" role="listitem" id="event-card-5" data-event-id="5" data-event-name="Lasallian Career Fair 2026">
+            <div class="event-card__image-wrap">
+              <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration for Lasallian Career Fair 2026" role="img">
+                <title>Lasallian Career Fair 2026 event banner</title>
+                <rect width="320" height="180" fill="#0a1a3d"/>
+                <!-- Building silhouettes -->
+                <rect x="20" y="80" width="40" height="100" fill="#1a2d5a"/>
+                <rect x="70" y="60" width="50" height="120" fill="#1e3468"/>
+                <rect x="130" y="70" width="45" height="110" fill="#1a2d5a"/>
+                <rect x="185" y="50" width="55" height="130" fill="#1e3468"/>
+                <rect x="250" y="75" width="50" height="105" fill="#1a2d5a"/>
+                <!-- Window lights -->
+                <rect x="28" y="88" width="8" height="6" fill="#fdb913" opacity=".8"/>
+                <rect x="42" y="88" width="8" height="6" fill="#fdb913" opacity=".6"/>
+                <rect x="28" y="102" width="8" height="6" fill="#fdb913" opacity=".5"/>
+                <rect x="78" y="68" width="8" height="6" fill="#fdb913" opacity=".8"/>
+                <rect x="93" y="68" width="8" height="6" fill="#fdb913" opacity=".9"/>
+                <rect x="108" y="68" width="8" height="6" fill="#fdb913" opacity=".4"/>
+                <rect x="78" y="82" width="8" height="6" fill="#fdb913" opacity=".7"/>
+                <rect x="195" y="58" width="10" height="7" fill="#fdb913" opacity=".9"/>
+                <rect x="212" y="58" width="10" height="7" fill="#fdb913" opacity=".7"/>
+                <rect x="229" y="58" width="10" height="7" fill="#fdb913" opacity=".5"/>
+                <!-- Briefcase icon -->
+                <rect x="138" y="85" width="30" height="22" rx="3" fill="#fdb913" opacity=".9"/>
+                <rect x="144" y="82" width="18" height="6" rx="2" fill="none" stroke="#fdb913" stroke-width="2"/>
+                <line x1="153" y1="85" x2="153" y2="107" stroke="#0a1a3d" stroke-width="1.5"/>
+                <line x1="138" y1="96" x2="168" y2="96" stroke="#0a1a3d" stroke-width="1.5"/>
+                <rect x="30" y="148" width="260" height="26" rx="5" fill="rgba(0,0,0,.5)"/>
+                <text x="160" y="165" text-anchor="middle" fill="#fdb913" font-size="12" font-weight="700" font-family="sans-serif">LASALLIAN CAREER FAIR 2026</text>
+              </svg>
+              <span class="event-card__badge">Career</span>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title">Lasallian Career Fair 2026</h3>
+              <ul class="event-card__meta" aria-label="Event details">
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <time datetime="2026-11-20">November 20–21, 2026 · 8:00 AM</time>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>DLSU Mall of the Arts Lobby</span>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  <span class="seats-badge seats-badge--plenty" aria-label="200 seats remaining">
+                    <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 110 10A5 5 0 0112 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+                    200 seats left
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <footer class="event-card__footer">
+              <button class="btn btn--primary register-btn"
+                      aria-label="Register for Lasallian Career Fair 2026"
+                      data-event-id="5"
+                      data-event-name="Lasallian Career Fair 2026">
+                Register
+              </button>
+            </footer>
+          </article>
+
+          <!-- ── EVENT 6 ─────────────────────────────────────── -->
+          <article class="event-card" role="listitem" id="event-card-6" data-event-id="6" data-event-name="Mental Wellness Week Workshop">
+            <div class="event-card__image-wrap">
+              <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration for Mental Wellness Week Workshop" role="img">
+                <title>Mental Wellness Week Workshop event banner</title>
+                <rect width="320" height="180" fill="#1a0a2a"/>
+                <!-- Gradient-like background blobs -->
+                <circle cx="80" cy="60" r="70" fill="#3d006a" opacity=".4"/>
+                <circle cx="240" cy="120" r="80" fill="#006633" opacity=".3"/>
+                <!-- Heart symbol -->
+                <path d="M160 75 C160 75 135 55 120 70 C105 85 120 105 160 125 C200 105 215 85 200 70 C185 55 160 75 160 75Z" fill="#fdb913" opacity=".85"/>
+                <path d="M160 80 C160 80 143 65 132 75 C121 85 132 100 160 118 C188 100 199 85 188 75 C177 65 160 80 160 80Z" fill="white" opacity=".15"/>
+                <!-- Brain wavy line -->
+                <path d="M138 91 Q146 84 154 91 Q162 98 170 91 Q178 84 186 91" fill="none" stroke="white" stroke-width="2" opacity=".6"/>
+                <rect x="35" y="143" width="250" height="28" rx="5" fill="rgba(0,0,0,.5)"/>
+                <text x="160" y="162" text-anchor="middle" fill="#fdb913" font-size="12" font-weight="700" font-family="sans-serif">MENTAL WELLNESS WEEK WORKSHOP</text>
+              </svg>
+              <span class="event-card__badge">Wellness</span>
+            </div>
+            <div class="event-card__body">
+              <h3 class="event-card__title">Mental Wellness Week Workshop</h3>
+              <ul class="event-card__meta" aria-label="Event details">
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <time datetime="2026-12-03">December 3, 2026 · 10:00 AM</time>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>DLSU Counseling &amp; Career Center</span>
+                </li>
+                <li>
+                  <svg class="meta-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  <span class="seats-badge seats-badge--full" aria-label="Fully booked, no seats remaining">
+                    <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 110 10A5 5 0 0112 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+                    Fully booked
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <footer class="event-card__footer">
+              <!-- disabled attribute + aria-disabled prevent registration
+                   while clearly communicating the state to AT users -->
+              <button class="btn btn--primary register-btn"
+                      aria-label="Mental Wellness Week Workshop is fully booked"
+                      data-event-id="6"
+                      data-event-name="Mental Wellness Week Workshop"
+                      disabled
+                      aria-disabled="true">
+                Fully Booked
+              </button>
+            </footer>
+          </article>
+
+        </div><!-- /events-grid -->
+      </section><!-- /catalog -->
+
+      <!-- ────────────────────────────────────────────────────
+           REGISTRATION SECTION
+      ──────────────────────────────────────────────────────── -->
+      <section id="register-section" class="registration-section" aria-labelledby="form-heading">
+
+        <div class="form-card">
+          <header class="form-card__header">
+            <h2 id="form-heading">Event Registration Form</h2>
+            <p>Fill in your details below to secure your slot. All fields are required.</p>
+          </header>
+
+          <div class="form-card__body">
+            <!--
+              novalidate disables native browser validation bubbles so our
+              custom accessible messages via aria-live are the only feedback.
+            -->
+            <form id="registration-form" novalidate aria-label="Event registration form">
+
+              <!-- Required-field legend announced to AT -->
+              <p style="font-size:0.875rem;color:#6b6b6b;margin-bottom:1.5rem;">
+                Fields marked <span aria-hidden="true" style="color:#b91c1c;font-weight:700;">*</span>
+                <span class="sr-only">with an asterisk</span> are required.
+              </p>
+
+              <!-- ── FULL NAME & STUDENT ID (2-column on tablet+) ── -->
+              <div class="form-row">
+
+                <div class="form-group">
+                  <!--
+                    for/id pairing links label to input (WCAG 1.3.1, 1.3.5).
+                    aria-label on the input provides a programmatic name for
+                    AT even if the visible label is missed.
+                  -->
+                  <label class="form-label" for="full-name">
+                    Full Name <span class="required-mark" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="full-name"
+                    name="full-name"
+                    autocomplete="name"
+                    aria-label="Full name"
+                    aria-required="true"
+                    aria-describedby="full-name-error"
+                    placeholder="e.g. Juan dela Cruz"
+                  />
+                  <!--
+                    aria-live="polite" on the error container means the
+                    message is announced after the current speech finishes
+                    (not interrupting). role="alert" is an alternative but
+                    polite is preferred for form validation.
+                  -->
+                  <span id="full-name-error" class="field-error" role="alert" aria-live="polite">
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span class="error-text"></span>
+                  </span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="student-id">
+                    Student ID <span class="required-mark" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="student-id"
+                    name="student-id"
+                    autocomplete="off"
+                    aria-label="Student ID number"
+                    aria-required="true"
+                    aria-describedby="student-id-error"
+                    placeholder="e.g. 12345678"
+                    inputmode="numeric"
+                    pattern="[0-9]{6,10}"
+                    maxlength="10"
+                  />
+                  <span id="student-id-error" class="field-error" role="alert" aria-live="polite">
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span class="error-text"></span>
+                  </span>
+                </div>
+
+              </div><!-- /form-row -->
+
+              <!-- ── STUDENT EMAIL ─────────────────────────────── -->
+              <div class="form-group">
+                <label class="form-label" for="student-email">
+                  Student Email <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-control"
+                  type="email"
+                  id="student-email"
+                  name="student-email"
+                  autocomplete="email"
+                  aria-label="Student email address ending with @univ.edu.ph"
+                  aria-required="true"
+                  aria-describedby="student-email-hint student-email-error"
+                  placeholder="yourname@univ.edu.ph"
+                />
+                <!-- Hint text linked via aria-describedby provides extra
+                     context without being an error — read by AT on focus -->
+                <span id="student-email-hint" style="font-size:0.8rem;color:#6b6b6b;">
+                  Must end with <strong>@univ.edu.ph</strong>
+                </span>
+                <span id="student-email-error" class="field-error" role="alert" aria-live="polite">
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span class="error-text"></span>
+                </span>
+              </div>
+
+              <!-- ── EVENT DROPDOWN ─────────────────────────────── -->
+              <div class="form-group">
+                <label class="form-label" for="event-select">
+                  Select Event <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <select
+                  class="form-control"
+                  id="event-select"
+                  name="event-select"
+                  aria-label="Select the campus event you want to register for"
+                  aria-required="true"
+                  aria-describedby="event-select-error"
+                >
+                  <option value="">— Choose an event —</option>
+                  <option value="1">National Science &amp; Tech Summit — Oct 15, 2026</option>
+                  <option value="2">Animo Sports Fest 2026 — Oct 22–24, 2026</option>
+                  <option value="3">Cultural Night: Sining at Lahi — Nov 7, 2026</option>
+                  <option value="4">Green Campus Sustainability Forum — Nov 14, 2026</option>
+                  <option value="5">Lasallian Career Fair 2026 — Nov 20–21, 2026</option>
+                  <option value="6" disabled>Mental Wellness Week Workshop (Fully Booked)</option>
+                </select>
+                <span id="event-select-error" class="field-error" role="alert" aria-live="polite">
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span class="error-text"></span>
+                </span>
+              </div>
+
+              <!-- ── SUBMIT ──────────────────────────────────────── -->
+              <button
+                class="btn btn--primary"
+                type="submit"
+                id="submit-btn"
+                aria-label="Submit your event registration"
+                style="margin-top:0.5rem;"
+              >
+                Submit Registration
+              </button>
+
+            </form><!-- /registration-form -->
+
+            <!-- SUCCESS BANNER — hidden until form submission -->
+            <div class="success-banner" id="success-banner" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="success-banner__icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <h3 class="success-banner__title">You're Registered! 🎉</h3>
+              <p class="success-banner__body">Your slot has been reserved. Check your DLSU email for the confirmation details.</p>
+              <div class="success-banner__detail" id="success-detail" aria-label="Registration summary">
+                <!-- populated by script.js -->
+              </div>
+            </div>
+
+          </div><!-- /form-card__body -->
+        </div><!-- /form-card -->
+
+      </section><!-- /register-section -->
+
+    </div><!-- /page-wrapper -->
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <p>
+      &copy; 2026 <strong style="color:#fdb913;">De La Salle University</strong> &mdash; Office of Student Affairs
+    </p>
+    <p>2401 Taft Avenue, Malate, Manila 1004, Philippines &nbsp;|&nbsp;
+      <a href="mailto:osa@dlsu.edu.ph">osa@dlsu.edu.ph</a>
+    </p>
+    <p style="margin-top:0.75rem;font-size:0.75rem;opacity:.6;">
+      This prototype is for educational use only. Built with plain HTML, CSS, and JavaScript — no frameworks.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

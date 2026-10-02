@@ -1,0 +1,436 @@
+/* ============================================================
+   DLSU Campus Event Management System — Stylesheet
+   Design System tokens are defined as CSS custom properties
+   so they can be reused throughout without magic numbers.
+   ============================================================ */
+
+/* ── 1. DESIGN TOKENS ──────────────────────────────────────── */
+:root {
+  /* DLSU brand palette */
+  --clr-green-900: #003d1f;   /* deepest green – used for text on light */
+  --clr-green-700: #006633;   /* primary DLSU green */
+  --clr-green-600: #007a3d;
+  --clr-green-100: #e6f2eb;   /* very light tint for backgrounds */
+  --clr-gold-500:  #fdb913;   /* DLSU gold */
+  --clr-gold-400:  #fec843;
+  --clr-white:     #ffffff;
+  --clr-gray-900:  #1a1a1a;
+  --clr-gray-700:  #3d3d3d;
+  --clr-gray-500:  #6b6b6b;
+  --clr-gray-200:  #e2e2e2;
+  --clr-gray-100:  #f5f5f5;
+  --clr-error:     #b91c1c;   /* red — passes 4.5:1 on white */
+  --clr-success:   #065f46;   /* dark green — passes 4.5:1 on white */
+
+  /* Typography */
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm:   0.875rem;
+  --font-size-lg:   1.125rem;
+  --font-size-xl:   1.5rem;
+  --font-size-2xl:  2rem;
+
+  /* Spacing scale */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;  --sp-3: 0.75rem;
+  --sp-4: 1rem;     --sp-5: 1.25rem; --sp-6: 1.5rem;
+  --sp-8: 2rem;     --sp-10: 2.5rem; --sp-12: 3rem;
+
+  /* Radii & Shadows */
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 16px;
+  --shadow-card: 0 2px 8px rgba(0,0,0,.12), 0 1px 3px rgba(0,0,0,.08);
+  --shadow-card-hover: 0 8px 24px rgba(0,102,51,.22), 0 2px 8px rgba(0,0,0,.1);
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* ── 2. RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--clr-gray-900);
+  background-color: var(--clr-gray-100);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ── 3. FOCUS STYLES (WCAG 2.4.7) ───────────────────────────── */
+/*
+   :focus-visible targets only keyboard navigation (not mouse clicks),
+   giving a thick gold outline that contrasts against any background.
+*/
+:focus-visible {
+  outline: 3px solid var(--clr-gold-500);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* ── 4. SKIP LINK (WCAG 2.4.1) ──────────────────────────────── */
+/*
+   Visually hidden until focused – lets keyboard users jump past the
+   repeated nav directly into main content.
+*/
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--sp-4);
+  background: var(--clr-green-700);
+  color: var(--clr-white);
+  padding: var(--sp-3) var(--sp-6);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top var(--transition-fast);
+}
+.skip-link:focus { top: 0; outline: 3px solid var(--clr-gold-500); }
+
+/* ── 5. HEADER & NAV ─────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(135deg, var(--clr-green-900) 0%, var(--clr-green-700) 100%);
+  color: var(--clr-white);
+  padding: var(--sp-4) var(--sp-6);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  text-decoration: none;
+  color: var(--clr-white);
+}
+
+.site-logo__text { font-size: var(--font-size-lg); font-weight: 700; line-height: 1.2; }
+.site-logo__text span { display: block; font-size: var(--font-size-sm); font-weight: 400; color: var(--clr-gold-400); letter-spacing: 0.04em; }
+
+.site-nav { display: flex; gap: var(--sp-2); }
+
+.site-nav a {
+  color: var(--clr-white);
+  text-decoration: none;
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  background: rgba(253,185,19,.18);
+  color: var(--clr-gold-400);
+}
+
+/* ── 6. HERO ─────────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(160deg, var(--clr-green-700) 0%, var(--clr-green-600) 55%, var(--clr-green-900) 100%);
+  color: var(--clr-white);
+  padding: var(--sp-12) var(--sp-6);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 5px;
+  background: var(--clr-gold-500);
+}
+.hero__subtitle {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-gold-400);
+  margin-bottom: var(--sp-3);
+}
+.hero__title {
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: var(--sp-4);
+}
+.hero__desc {
+  font-size: var(--font-size-lg);
+  max-width: 55ch;
+  margin: 0 auto var(--sp-6);
+  color: rgba(255,255,255,.85);
+}
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--clr-gold-500);
+  color: var(--clr-green-900);
+  padding: var(--sp-3) var(--sp-8);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+.hero__cta:hover { background: var(--clr-gold-400); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+
+/* ── 7. PAGE WRAPPER ─────────────────────────────────────────── */
+.page-wrapper { max-width: 1200px; margin: 0 auto; padding: var(--sp-8) var(--sp-4); }
+
+/* ── 8. SECTION HEADINGS ─────────────────────────────────────── */
+.section-heading {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--clr-green-900);
+  margin-bottom: var(--sp-2);
+  padding-bottom: var(--sp-2);
+  border-bottom: 3px solid var(--clr-gold-500);
+  display: inline-block;
+}
+.section-intro { color: var(--clr-gray-700); margin-bottom: var(--sp-6); }
+
+/* ── 9. EVENT GRID ───────────────────────────────────────────── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: var(--sp-6);
+  margin-top: var(--sp-4);
+}
+
+/* ── 10. EVENT CARD ──────────────────────────────────────────── */
+.event-card {
+  background: var(--clr-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  border: 1px solid var(--clr-gray-200);
+}
+.event-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+
+.event-card__image-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--clr-green-100);
+}
+.event-card__image-wrap svg { width: 100%; height: 100%; }
+
+.event-card__badge {
+  position: absolute;
+  top: var(--sp-3); left: var(--sp-3);
+  background: var(--clr-gold-500);
+  color: var(--clr-green-900);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: 100px;
+}
+
+.event-card__body {
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  flex: 1;
+}
+
+.event-card__title { font-size: var(--font-size-lg); font-weight: 700; color: var(--clr-green-900); line-height: 1.3; }
+
+.event-card__meta {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  font-size: var(--font-size-sm);
+  color: var(--clr-gray-700);
+}
+.event-card__meta li { display: flex; align-items: center; gap: var(--sp-2); }
+.meta-icon { width: 16px; height: 16px; flex-shrink: 0; color: var(--clr-green-700); }
+
+.seats-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: 100px;
+}
+.seats-badge--plenty { background: #dcfce7; color: var(--clr-success); }
+.seats-badge--low    { background: #fef3c7; color: #92400e; }
+.seats-badge--full   { background: #fee2e2; color: var(--clr-error); }
+
+.event-card__footer { padding: 0 var(--sp-5) var(--sp-5); margin-top: auto; }
+
+/* ── 11. BUTTONS ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-6);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast),
+              border-color var(--transition-fast), transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+  white-space: nowrap;
+}
+.btn--primary { background: var(--clr-green-700); color: var(--clr-white); width: 100%; }
+.btn--primary:hover:not(:disabled) { background: var(--clr-green-600); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,102,51,.35); }
+.btn--primary:disabled { background: var(--clr-gray-500); cursor: not-allowed; opacity: 0.7; }
+
+/* ── 12. REGISTRATION FORM ───────────────────────────────────── */
+.registration-section { margin-top: var(--sp-12); }
+
+.form-card {
+  background: var(--clr-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--clr-gray-200);
+  overflow: hidden;
+}
+.form-card__header {
+  background: linear-gradient(135deg, var(--clr-green-900), var(--clr-green-700));
+  padding: var(--sp-6) var(--sp-8);
+  color: var(--clr-white);
+}
+.form-card__header h2 { font-size: var(--font-size-xl); font-weight: 800; margin-bottom: var(--sp-1); }
+.form-card__header p  { color: rgba(255,255,255,.8); font-size: var(--font-size-sm); }
+.form-card__body { padding: var(--sp-8); }
+
+/* ── 13. FORM FIELDS ─────────────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+
+/* Labels are always visible above inputs — avoids the "placeholder-as-label"
+   anti-pattern that hides context when typing begins. */
+.form-label { font-size: var(--font-size-sm); font-weight: 600; color: var(--clr-gray-900); }
+
+.form-control {
+  padding: var(--sp-3) var(--sp-4);
+  border: 2px solid var(--clr-gray-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  color: var(--clr-gray-900);
+  background: var(--clr-white);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
+}
+.form-control:hover { border-color: var(--clr-gray-500); }
+/* Green focus ring meets WCAG 1.4.11 (3:1 non-text contrast) */
+.form-control:focus { outline: none; border-color: var(--clr-green-700); box-shadow: 0 0 0 3px rgba(0,102,51,.2); }
+.form-control[aria-invalid="true"] { border-color: var(--clr-error); box-shadow: 0 0 0 3px rgba(185,28,28,.15); }
+.form-control[aria-invalid="true"]:focus { box-shadow: 0 0 0 3px rgba(185,28,28,.25); }
+
+/*
+   Error messages are in an aria-live="polite" region so screen readers
+   announce them without interrupting ongoing speech.
+*/
+.field-error {
+  font-size: var(--font-size-sm);
+  color: var(--clr-error);
+  font-weight: 500;
+  display: none;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  min-height: 1.25rem;
+}
+.field-error.is-visible { display: flex; }
+.field-error svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; }
+
+/* ── 14. FORM ROW (2-up on wide screens) ─────────────────────── */
+.form-row { display: grid; grid-template-columns: 1fr; gap: 0 var(--sp-6); }
+@media (min-width: 640px) { .form-row { grid-template-columns: 1fr 1fr; } }
+
+/* ── 15. SUCCESS BANNER ──────────────────────────────────────── */
+/* role="alert" on the banner means screen readers announce it immediately */
+.success-banner {
+  display: none;
+  background: #ecfdf5;
+  border: 2px solid var(--clr-success);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6) var(--sp-8);
+  text-align: center;
+  margin-top: var(--sp-6);
+}
+.success-banner.is-visible { display: block; animation: fadeSlideIn 0.4s ease; }
+.success-banner__icon {
+  width: 56px; height: 56px;
+  margin: 0 auto var(--sp-4);
+  background: var(--clr-success);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.success-banner__title { font-size: var(--font-size-xl); font-weight: 800; color: var(--clr-success); margin-bottom: var(--sp-2); }
+.success-banner__body  { color: var(--clr-gray-700); margin-bottom: var(--sp-4); }
+.success-banner__detail {
+  background: var(--clr-white);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4) var(--sp-6);
+  border: 1px solid var(--clr-gray-200);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--clr-gray-700);
+  display: inline-block;
+  min-width: 260px;
+}
+.success-banner__detail strong { color: var(--clr-gray-900); }
+@keyframes fadeSlideIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── 16. FOOTER ──────────────────────────────────────────────── */
+.site-footer {
+  background: var(--clr-green-900);
+  color: rgba(255,255,255,.75);
+  text-align: center;
+  padding: var(--sp-8) var(--sp-4);
+  margin-top: var(--sp-12);
+  font-size: var(--font-size-sm);
+}
+.site-footer a { color: var(--clr-gold-400); text-decoration: underline; }
+.site-footer p + p { margin-top: var(--sp-2); }
+
+/* ── 17. UTILITY ─────────────────────────────────────────────── */
+/* Visually hidden but announced by screen readers */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ── 18. REDUCED-MOTION (WCAG 2.3.3) ────────────────────────── */
+/* Disables animations for users with vestibular disorders */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
